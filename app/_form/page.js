@@ -53,7 +53,7 @@ export function ProfileForm() {
     },
   });
   const onSubmit = async (data) => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/insert`, {
+    const res = await fetch(`https://backend-9how.onrender.com/insert`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

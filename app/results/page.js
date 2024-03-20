@@ -34,7 +34,7 @@ const Results = () => {
       headers: {
         "content-type": "application/json",
         "Content-Type": "application/json",
-        "X-RapidAPI-Key": `${process.env.NEXT_PUBLIC_RAPID_API_KEY}`,
+        "X-RapidAPI-Key": process.env.NEXT_PUBLIC_RAPID_API_KEY,
         "X-RapidAPI-Host": "judge0-ce.p.rapidapi.com",
       },
       body: JSON.stringify({
@@ -57,7 +57,7 @@ const Results = () => {
             `https://judge0-ce.p.rapidapi.com/submissions/${token}`,
             {
               headers: {
-                "X-RapidAPI-Key": `${process.env.NEXT_PUBLIC_RAPID_API_KEY}`,
+                "X-RapidAPI-Key": process.env.NEXT_PUBLIC_RAPID_API_KEY,
                 "X-RapidAPI-Host": "judge0-ce.p.rapidapi.com",
               },
             }
@@ -116,7 +116,7 @@ const Results = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/results`);
+      const res = await fetch(`https://backend-9how.onrender.com/results`);
       if (!res.ok) {
         throw new Error(`HTTP error! status: ${res.status}`);
       }
