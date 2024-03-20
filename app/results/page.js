@@ -25,6 +25,7 @@ const Results = () => {
   };
 
   const runCode = async (code, stdin, language, id) => {
+    const timestamp = new Date();
     language = language.charAt(0).toUpperCase() + language.slice(1);
     const url =
       "https://judge0-ce.p.rapidapi.com/submissions?base64_encoded=true&fields=*";
@@ -71,7 +72,10 @@ const Results = () => {
             clearInterval(checkInterval);
             setOutput((prevOutput) => ({
               ...prevOutput,
-              [id]: resultData.stdout,
+              [id]: {
+                ans: resultData.stdout,
+                time: timestamp,
+              },
             }));
             resolve();
           }
@@ -131,6 +135,7 @@ const Results = () => {
           <TableHead>Coding Language</TableHead>
           <TableHead>STDIN</TableHead>
           <TableHead>Code</TableHead>
+          <TableHead>Time Stamp</TableHead>
           <TableHead>Output</TableHead>
         </TableRow>
       </TableHeader>
@@ -164,7 +169,10 @@ const Results = () => {
                 </Button>
               </div>
             </TableCell>
-            <TableCell>{output[row.id]}</TableCell>
+            <TableCell>
+              {output[row.id] ? output[row.id].time.toLocaleString() : ""}
+            </TableCell>
+            <TableCell>{output[row.id] ? output[row.id].ans : ""}</TableCell>
           </TableRow>
         ))}
       </TableBody>
