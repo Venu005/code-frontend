@@ -41,7 +41,7 @@ export const NavBar = () => {
           </MenubarItem>
           <MenubarItem>
             <Link
-              href="https://github.com"
+              href="https://github.com/Venu005/code-frontend"
               className="flex items-center justify-center"
             >
               <GithubIcon className="mr-2" /> <span>Github (Frontend)</span>
